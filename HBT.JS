@@ -1,0 +1,1 @@
+alert('HBT XSS VietlottSMS');
